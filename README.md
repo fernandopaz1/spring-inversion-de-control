@@ -49,3 +49,44 @@ Detro de este archivo `src/applicationContext.xml` especificamos los beans con u
 ```
 
 La ruta debe estar completa incluyendo los nombres del paquete que contiene a mi clase.
+
+# Injeccion de dependencias
+
+El cliente delega la reponsabilidad de proveer dependencias llamando a otro objeto.
+Los beans que creamos y configuramos via el archivo de configuración puede necesitar dependencias u objetos auxiliares. La idea es que en vez de instanciar el bean y los objetos de los cuales depende lo hacemos automaticamente usando el framework de spring.
+
+Estas dependencias las llamamos helpers.
+
+### Tipos de injección de de pendencia
+
+* Constructor injection
+* Setter injection
+* Auto-wiring (con annotations) 
+
+### Como crear una injeccion
+
+1. Definir una interfaz para la dependencia
+2. Crear un constructor en la clase para aceptar injecciones
+3. Configurar la injección de dependencias en el archivo de configuraciones de spring
+
+En el archivo nos debe quedar algo parecido a 
+
+```
+<bean id="myFortuneService"
+	class="com.luv2code.springdemo.HappyFortuneService">
+</bean> 
+
+<bean id="myCoach"
+    class="com.luv2code.springdemo.TrackCoach">
+    <constructor-arg ref="myFortuneService"/>
+</bean>
+```
+
+donde configuramos nuestro bean correspondiente al helper y se lo pasamos al constructor del bean Coach.
+
+El archivo de configuracion a la hora de recuperar el bean se corresponde con el siguiente codigo
+
+```
+HappyFortuneService myFortuneService = new HappyFortuneService();
+TackCoach myCoach = new TrackCoach(myFortuneService);
+````
