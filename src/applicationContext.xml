@@ -18,6 +18,13 @@
     	 <!-- Injección de dependencia via constructor -->
     	 <constructor-arg ref="myFortuneService"/>
     </bean>
+    
+    <bean id="myCricketCoach"
+    	class="com.luv2code.springdemo.CricketCoach">
+    	 <!-- Injección de dependencia via setter -->
+    	 <property name="fortuneService" ref="myFortuneService"/>
+    </bean>
+    
 </beans>
 
 
