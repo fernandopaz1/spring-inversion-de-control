@@ -50,7 +50,7 @@ Detro de este archivo `src/applicationContext.xml` especificamos los beans con u
 
 La ruta debe estar completa incluyendo los nombres del paquete que contiene a mi clase.
 
-# Injeccion de dependencias
+# Inyección de dependencias
 
 El cliente delega la reponsabilidad de proveer dependencias llamando a otro objeto.
 Los beans que creamos y configuramos via el archivo de configuración puede necesitar dependencias u objetos auxiliares. La idea es que en vez de instanciar el bean y los objetos de los cuales depende lo hacemos automaticamente usando el framework de spring.
@@ -63,7 +63,7 @@ Estas dependencias las llamamos helpers.
 * Setter injection
 * Auto-wiring (con annotations) 
 
-### Como crear una injeccion
+## Constructor Injection
 
 1. Definir una interfaz para la dependencia
 2. Crear un constructor en la clase para aceptar injecciones
@@ -89,4 +89,32 @@ El archivo de configuracion a la hora de recuperar el bean se corresponde con el
 ```
 HappyFortuneService myFortuneService = new HappyFortuneService();
 TackCoach myCoach = new TrackCoach(myFortuneService);
+````
+
+## Setter Injection
+
+Injecta dependencias llamando a metodos setter dentro de la clase. Hay que hacerlo mediante los siguientes pasos:
+
+1. Crear los metodos setter en la clase para permitir injecciones
+2. Configurar la inyección de deppendencias en el archivo de configuraciones de Spring.
+
+Básicamente en vez de instanciar las dependencias con el contructor, lo que hacermos es asignarle el objeto de dependencias nuestro bean luego de que fue creado usando un setter.
+
+```
+<bean id="myCoach"
+    class="com.luv2code.springdemo.TrackCoach">
+    <property name="fortuneService" ref="myFortuneService"/>
+</bean>
+```
+
+En el archivo de configuraciondes, dentro de un tag `property` especificamos que setter usar con el campo `name` le asignamos el helper previamente definido en el archivo con el canpo `ref`.
+
+Spring lo que hace es tomar el `name` capitaliza la primer letra y agrega el set, ese es el método que va a usar.
+
+El resultado final es equivalente a 
+
+```
+HappyFortuneService myFortuneService = new HappyFortuneService();
+TackCoach myCoach = new TrackCoach();
+myCoach.setFortuneService(myFortuneService);
 ````
