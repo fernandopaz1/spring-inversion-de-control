@@ -44,7 +44,7 @@ Detro de este archivo `src/applicationContext.xml` especificamos los beans con u
 
 ``` 
 <bean id="myCoach"
-    class="com.luv2code.springdemo TrackCoach">
+    class="com.luv2code.springdemo.TrackCoach">
 </bean>
 ```
 
