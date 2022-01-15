@@ -13,7 +13,8 @@
     <!-- Definicion de la dependencia -->
 
 	<bean id="myFortuneService"
-		class="com.luv2code.springdemo.HappyFortuneService">
+		class="com.luv2code.springdemo.RandomFortuneService">
+		<property name="fortuneOptions" value="${foo.options}"/>
 	</bean> 
 	
 	<bean id="myCoach"
