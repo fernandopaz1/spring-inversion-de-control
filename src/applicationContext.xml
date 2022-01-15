@@ -7,6 +7,9 @@
     http://www.springframework.org/schema/context
     http://www.springframework.org/schema/context/spring-context.xsd">
 
+
+	<!-- Cargando las properties desde archivo -->
+	<context:property-placeholder location="classpath:sport.properties"/>
     <!-- Definicion de la dependencia -->
 
 	<bean id="myFortuneService"
@@ -22,7 +25,12 @@
     <bean id="myCricketCoach"
     	class="com.luv2code.springdemo.CricketCoach">
     	 <!-- Injección de dependencia via setter -->
-    	 <property name="fortuneService" ref="myFortuneService"/>
+		<property name="fortuneService" ref="myFortuneService"/>
+		
+		<!-- Si vamos a inyectar un valor usamos value en vez de ref -->
+		<property name="name" value="Fernando"/>
+		<property name="email" value="${foo.email}"/>
+		<property name="team" value="${foo.team}"/>
     </bean>
     
 </beans>

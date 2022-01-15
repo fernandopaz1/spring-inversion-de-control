@@ -118,3 +118,7 @@ HappyFortuneService myFortuneService = new HappyFortuneService();
 TackCoach myCoach = new TrackCoach();
 myCoach.setFortuneService(myFortuneService);
 ````
+
+Esto tambien puede hacerse para en vez de inyectar dependencias en forma de objetos, podamos inyectar literales, tales como un campo nombre, email, telefono.
+
+Estas propiedades tambien pueden ser cargadas desde un archivo de propiedades, cargando ese archivo en el spring config File y referenciando los valores del archivo de propiedades.
