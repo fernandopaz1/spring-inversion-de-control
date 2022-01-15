@@ -15,9 +15,8 @@ public class RandomFortuneService implements FortuneService {
 
 	@Override
 	public String getFortune() {
-		String[] options= fortuneOptions ;//.split(","); 
-		int index = generator.nextInt(options.length);
-		return options[index];
+		int index = generator.nextInt(fortuneOptions.length);
+		return fortuneOptions[index];
 	}
 
 }
