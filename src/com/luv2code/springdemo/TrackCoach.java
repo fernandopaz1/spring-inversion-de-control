@@ -1,13 +1,13 @@
 package com.luv2code.springdemo;
 
 public class TrackCoach implements Coach {
-	
-	//definimos un campo privado para la dependencia
+
+	// definimos un campo privado para la dependencia
 	private FortuneService fortuneService;
-	
+
 	// definimos un constructor para la inyeccion de dependencias
-	public TrackCoach (FortuneService theFortuneService) {
-		fortuneService=theFortuneService;
+	public TrackCoach(FortuneService theFortuneService) {
+		fortuneService = theFortuneService;
 	}
 
 	@Override

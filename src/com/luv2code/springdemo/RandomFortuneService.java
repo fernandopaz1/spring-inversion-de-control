@@ -6,12 +6,10 @@ public class RandomFortuneService implements FortuneService {
 
 	private String[] fortuneOptions;
 	private static Random generator = new Random();
-	
+
 	public void setFortuneOptions(String[] fortuneOptions) {
 		this.fortuneOptions = fortuneOptions;
 	}
-
-
 
 	@Override
 	public String getFortune() {

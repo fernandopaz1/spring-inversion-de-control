@@ -6,15 +6,15 @@ public class CricketCoach implements Coach {
 	private String name;
 	private String email;
 	private String team;
-	
+
 	public CricketCoach() {
 		System.out.println("CricketCoach: inside no args constructor");
 	}
-	
+
 	public void setFortuneService(FortuneService fortuneService) {
 		this.fortuneService = fortuneService;
 	}
-	
+
 	@Override
 	public String getDailyWorkout() {
 		return "Practice fast bowling for 15 minutes";
@@ -39,6 +39,6 @@ public class CricketCoach implements Coach {
 
 	@Override
 	public String toString() {
-		return this.name +" "+this.email+" "+ this.team;
+		return this.name + " " + this.email + " " + this.team;
 	}
 }
